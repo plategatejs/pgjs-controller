@@ -1,0 +1,11 @@
+{
+  "amqp": {
+    "host": "example.com",
+    "port": 1337,
+    "username": "username",
+    "password": "password"
+  },
+  "camera": {
+    "url": "http://example.com/image.jpg"
+  }
+}

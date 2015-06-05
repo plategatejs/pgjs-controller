@@ -4,5 +4,9 @@
   "description": "pgjs-controller",
   "main": "server.js",
   "author": "plategatejs",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "amqp": "^0.2.4",
+    "config": "^1.14.0"
+  }
 }
