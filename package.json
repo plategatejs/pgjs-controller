@@ -1,0 +1,8 @@
+{
+  "name": "pgjs-controller",
+  "version": "0.1.0",
+  "description": "pgjs-controller",
+  "main": "server.js",
+  "author": "plategatejs",
+  "license": "MIT"
+}
