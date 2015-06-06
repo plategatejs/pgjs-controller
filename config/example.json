@@ -6,6 +6,7 @@
     "password": "password"
   },
   "camera": {
-    "url": "http://example.com/image.jpg"
+    "url": "http://example.com/image.jpg",
+    "frequency": 1
   }
 }
