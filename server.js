@@ -1,21 +1,25 @@
-var bootstrap = require('./lib/bootstrap.js');
+var config = require('config');
 
-bootstrap
-    .then(function (data) {
-        var grabber = data.grabber;
+// setting Image Grabber up
+var url = config.get('image.url'),
+    frequency = config.get('image.frequency');
 
-        // TODO putting received images on queue
+var Grabber = require('./lib/grabber.js'),
+    grabber = new Grabber(url, frequency);
 
-        grabber.on('image', function (image) {
-            console.log('received image');
-        });
+// setting AMQP Queue up
+var host = config.get('amqp.host'),
+    port = config.get('amqp.port'),
+    username = config.get('amqp.username'),
+    password = config.get('amqp.password');
 
-        grabber.on('error', function (error) {
-            console.log('error: ' + error);
-        });
+var Queue = require('./lib/queue.js'),
+    queue = new Queue(host, port, username, password);
 
-        grabber.start();
-    })
-    .catch(function (e) {
-        console.log(e);
+queue.connect(function () {
+    grabber.start();
+
+    grabber.on('image', function (image) {
+        queue.enqueueImage(image);
     });
+});

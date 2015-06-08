@@ -6,10 +6,8 @@
   "author": "plategatejs",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.9.27",
     "bramqp": "^0.3.2",
     "chalk": "^1.0.0",
-    "config": "^1.14.0",
-    "request": "^2.57.0"
+    "config": "^1.14.0"
   }
 }

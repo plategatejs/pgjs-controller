@@ -5,7 +5,7 @@
     "username": "username",
     "password": "password"
   },
-  "camera": {
+  "image": {
     "url": "http://example.com/image.jpg",
     "frequency": 1
   }
