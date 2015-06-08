@@ -16,6 +16,21 @@ var host = config.get('amqp.host'),
 var Queue = require('./lib/queue.js'),
     queue = new Queue(host, port, username, password);
 
+queue.onPlates(function (plates) {
+    if (plates.hasOwnProperty('results') &&
+        Object.prototype.toString.call(plates.results) === '[object Array]'
+    ) {
+        var i = 1;
+        plates.results.forEach(function (result) {
+            console.log('Plate ' + i++);
+
+            result.candidates.forEach(function (candidate) {
+                console.log('Plate: ' + candidate.plate + ', confidence: ' + candidate.confidence + '.');
+            });
+        });
+    }
+});
+
 queue.connect(function () {
     grabber.start();
 
