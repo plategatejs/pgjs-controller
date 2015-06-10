@@ -8,6 +8,8 @@
   "dependencies": {
     "bramqp": "^0.3.2",
     "chalk": "^1.0.0",
-    "config": "^1.14.0"
+    "config": "^1.14.0",
+    "include-all": "^0.1.6",
+    "mongoose": "^4.0.5"
   }
 }

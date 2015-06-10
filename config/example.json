@@ -1,4 +1,11 @@
 {
+  "mongodb": {
+    "host": "example.com",
+    "port": 1337,
+    "database": "database",
+    "username": "username",
+    "password": "password"
+  },
   "amqp": {
     "host": "example.com",
     "port": 1337,
