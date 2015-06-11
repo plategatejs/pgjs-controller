@@ -15,5 +15,8 @@
   "image": {
     "url": "http://example.com/image.jpg",
     "frequency": 1
+  },
+  "gate": {
+    "url": "http://example.com/open-gate"
   }
 }

@@ -1,4 +1,5 @@
 var config = require('config');
+var http = require('http');
 
 // setting Image Grabber up
 var url = config.get('image.url'),
@@ -20,6 +21,11 @@ var Queue = require('./lib/queue.js'),
 var database = require('./lib/database.js');
 
 // plate recognition logic
+var gateOpenRequest = function () {
+    var url = config.get('gate.url');
+    http.get(url);
+};
+
 var onPlatesRecognized = function (mongoose) {
     return function (plates) {
         var results = plates.results || [];
@@ -46,6 +52,7 @@ var onPlatesRecognized = function (mongoose) {
         }, function (err, plates) {
             if (!err && !!plates.length) {
                 console.log('Opening the gate.');
+                gateOpenRequest();
             }
         });
     };
