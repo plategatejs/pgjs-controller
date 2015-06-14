@@ -1,5 +1,4 @@
 # pgjs-controller
 
-
 ## License
-MIT
+[MIT](license.md)
