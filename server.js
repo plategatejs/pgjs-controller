@@ -23,7 +23,11 @@ var database = require('./lib/database.js');
 // plate recognition logic
 var gateOpenRequest = function () {
     var url = config.get('gate.url');
-    http.get(url);
+    http
+        .get(url)
+        .on('error', function () {
+            console.log('Error occurred while requesting gate open.');
+        });
 };
 
 var onPlatesRecognized = function (mongoose) {
@@ -51,7 +55,11 @@ var onPlatesRecognized = function (mongoose) {
             }
         }, function (err, plates) {
             if (!err && !!plates.length) {
-                console.log('Opening the gate.');
+                var values = plates.map(function (plate) {
+                    return plate.value;
+                }).join(', ');
+
+                console.log('Opening the gate. Recognized plates: ' + values + '.');
                 gateOpenRequest();
             }
         });
