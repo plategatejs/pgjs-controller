@@ -1,0 +1,9 @@
+{
+  "camera": {
+    "url": "http://pgjs-camera/image",
+    "frequency": 1
+  },
+  "gate": {
+    "url": "http://pgjs-gate/open"
+  }
+}

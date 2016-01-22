@@ -2,14 +2,23 @@
   "name": "pgjs-controller",
   "version": "0.1.0",
   "description": "pgjs-controller",
-  "main": "server.js",
-  "author": "plategatejs",
+  "author": "PlateGateJS",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/plategatejs/pgjs-controller.git"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./bin/start.js"
+  },
   "dependencies": {
-    "bramqp": "^0.3.2",
-    "chalk": "^1.0.0",
-    "config": "^1.14.0",
-    "include-all": "^0.1.6",
-    "mongoose": "^4.0.5"
+    "babel-preset-es2016-node5": "1.1.2",
+    "babel-register": "6.3.13",
+    "body-parser": "1.14.2",
+    "config": "1.17.1",
+    "redis": "2.4.2",
+    "request-promise": "2.0.0",
+    "winston": "2.1.1"
   }
 }
