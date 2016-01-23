@@ -1,12 +1,18 @@
 {
   "camera": {
     "url": "http://pgjs-camera/image",
-    "frequency": 1
+    "time": 1000
   },
   "gate": {
     "open": "http://pgjs-gate/open"
   },
-  "redis": "pgjs-redis:6379",
+  "redis": {
+    "url": "redis://pgjs-redis:6379",
+    "channels": {
+      "images": "images",
+      "plates": "plates"
+    }
+  },
   "logger": {
     "console": {
       "level": "info",
