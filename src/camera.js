@@ -10,29 +10,43 @@ const Camera = function (url, time) {
   let running = false;
   let timeout = null;
 
-  const grabImage = () => {
+  const requestImage = (options) => new Promise((resolve, reject) => {
+    request(options)
+      .on('response', (response) => {
+        const length = +response.headers['content-length'];
+        const image = new Buffer(length);
+        let size = 0;
+
+        response.on('data', (data) => {
+          image.write(data.toString('binary'), size, data.length, 'binary');
+          size += data.length;
+        });
+
+        response.on('end', () => resolve(image));
+      })
+      .on('error', error => reject(error));
+  });
+
+  const worker = () => {
     const options = {
       method: 'get',
       encoding: null,
       url
     };
 
-    request(options, (error, res, body) => {
-      if (error) {
-        return logger.error(error);
-      }
-
-      if (running) {
-        this.emit('image', body);
-      }
-    });
-
-    timeout = setTimeout(grabImage, time);
+    requestImage(options)
+      .then(image => {
+        if (running) {
+          this.emit('image', image);
+        }
+      })
+      .catch(error => logger.error(error))
+      .then(() => timeout = setTimeout(worker, time));
   };
 
   this.start = () => {
     if (!running) {
-      grabImage();
+      worker();
     }
     running = true;
     return this;

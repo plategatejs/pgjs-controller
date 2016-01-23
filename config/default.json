@@ -1,10 +1,10 @@
 {
   "camera": {
-    "url": "http://pgjs-camera/image",
+    "url": "http://pgjs-camera:8400/image",
     "time": 1000
   },
   "gate": {
-    "open": "http://pgjs-gate/open"
+    "open": "http://pgjs-gate:8200/open"
   },
   "redis": {
     "url": "redis://pgjs-redis:6379",
