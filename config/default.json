@@ -4,6 +4,13 @@
     "frequency": 1
   },
   "gate": {
-    "url": "http://pgjs-gate/open"
+    "open": "http://pgjs-gate/open"
+  },
+  "redis": "pgjs-redis:6379",
+  "logger": {
+    "console": {
+      "level": "info",
+      "colorize": true
+    }
   }
 }
