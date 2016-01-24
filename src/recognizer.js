@@ -7,7 +7,7 @@ import redis from './redis';
 const Recognizer = function () {
   EventEmitter.call(this);
 
-  const channels = config.get('redis.channels.images');
+  const channels = config.get('redis.channels');
 
   this.enqueue = (image) => redis.publish(channels.images, image.toString('base64'));
 };

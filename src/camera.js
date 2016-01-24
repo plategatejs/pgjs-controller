@@ -46,7 +46,7 @@ const Camera = function (url, time) {
 
   this.start = () => {
     if (!running) {
-      worker();
+      setTimeout(worker);
     }
     running = true;
     return this;
