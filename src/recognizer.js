@@ -2,14 +2,25 @@
 
 import EventEmitter from 'events';
 import config from 'config';
-import redis from './redis';
+import { publishClient, subscribeClient } from './redis';
 
 const Recognizer = function () {
   EventEmitter.call(this);
 
   const channels = config.get('redis.channels');
 
-  this.enqueue = (image) => redis.publish(channels.images, image.toString('base64'));
+  this.enqueue = (image) => {
+    publishClient.publish(channels.images, image.toString('base64'));
+  };
+
+  subscribeClient.on('message', (channel, message) => {
+    if (channel === channels.plates) {
+      const plates = JSON.parse(message);
+      this.emit('plates', plates);
+    }
+  });
+
+  this.start = () => subscribeClient.subscribe(channels.plates);
 };
 
 Recognizer.prototype = Object.create(EventEmitter.prototype);

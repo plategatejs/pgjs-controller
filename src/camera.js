@@ -1,11 +1,14 @@
 'use strict';
 
 import EventEmitter from 'events';
+import config from 'config';
 import request from 'request';
 import logger from './logger';
 
-const Camera = function (url, time) {
+const Camera = function () {
   EventEmitter.call(this);
+
+  const { url, time } = config.get('camera');
 
   let running = false;
   let timeout = null;

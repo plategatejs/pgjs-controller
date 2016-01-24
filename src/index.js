@@ -5,11 +5,14 @@ import Camera from './camera';
 import Recognizer from './recognizer';
 
 export default () => {
-  const { url, time } = config.get('camera');
-  const camera = new Camera(url, time);
+  const camera = new Camera;
   const recognizer = new Recognizer;
 
-  camera
-    .on('image', image => recognizer.enqueue(image))
+  camera.on('image', image => recognizer.enqueue(image));
+
+  recognizer
+    .on('plates', plates => console.log(plates))
     .start();
+
+  camera.start();
 };
