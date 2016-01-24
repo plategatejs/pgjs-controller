@@ -1,6 +1,5 @@
 'use strict';
 
-import config from 'config';
 import Camera from './camera';
 import Recognizer from './recognizer';
 

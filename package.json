@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/plategatejs/pgjs-controller.git"
+    "url": "git+https://github.com/plategatejs/pgjs-controller.git"
   },
   "main": "src/index.js",
   "scripts": {
