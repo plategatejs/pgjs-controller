@@ -40,6 +40,7 @@ const Camera = function () {
     requestImage(options)
       .then(image => {
         if (running) {
+          logger.info('received image from camera');
           this.emit('image', image);
         }
       })

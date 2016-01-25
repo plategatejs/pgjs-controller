@@ -1,11 +1,10 @@
 {
   "camera": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Croatian_license_plate.jpg",
+    "url": "http://pgjs-camera:8400",
     "time": 1000
   },
-  "gate": {
-    "open": "http://pgjs-gate:8200/open"
-  },
+  "gate": "http://pgjs-gate:8200",
+  "console": "http://pgjs-console:8600",
   "redis": {
     "url": "redis://pgjs-redis:6379",
     "channels": {
@@ -16,7 +15,8 @@
   "logger": {
     "console": {
       "level": "info",
-      "colorize": true
+      "colorize": true,
+      "timestamp": true
     }
   }
 }
